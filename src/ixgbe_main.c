@@ -69,8 +69,14 @@ static const char ixgbe_driver_string[] =
 
 #define RELEASE_TAG
 
+#if defined(CONFIG_NETMAP) || defined(CONFIG_NETMAP_MODULE)
+#define NETMAP_TAG "-netmap"
+#else
+#define NETMAP_TAG
+#endif
+
 #define DRV_VERSION	__stringify(4.1.5) DRIVERIOV DRV_HW_PERF FPGA \
-			BYPASS_TAG RELEASE_TAG
+			BYPASS_TAG RELEASE_TAG NETMAP_TAG
 const char ixgbe_driver_version[] = DRV_VERSION;
 static const char ixgbe_copyright[] =
 				"Copyright (c) 1999-2015 Intel Corporation.";
